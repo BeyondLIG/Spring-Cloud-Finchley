@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: method_route
+          uri: http://httpbin.org:80/get
+          predicates:
+            - Method=GET
+        - id: path_route
+          uri: http://httpbin.org:80/get
+          predicates:
+            - Path=/foo/{segment}
+        - id: query_route
+          uri: http://httpbin.org:80/get
+          predicates:
+            - Query=foo, ba.
